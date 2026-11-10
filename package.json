@@ -1,0 +1,26 @@
+{
+  "name": "live-translate-win",
+  "version": "1.1.1",
+  "description": "Live speech-to-speech translation with Gemini Live API",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win nsis"
+  },
+  "devDependencies": {
+    "electron": "^45.0.0",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "com.example.livetranslate",
+    "productName": "Live Translate",
+    "files": ["main.js", "index.html", "style.css", "renderer.js", "pcm-worklet.js", "build/icon.png"],
+    "win": { "icon": "build/icon.ico", "target": ["nsis"] },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  }
+}

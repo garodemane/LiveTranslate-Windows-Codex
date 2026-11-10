@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy"
+  content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; media-src 'self' blob: mediastream:; connect-src wss://generativelanguage.googleapis.com">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Live Translate</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <header>
+    <div class="brand">
+      <img src="build/icon.png" alt="" class="logo">
+      <div>
+        <h1 data-i18n="app">Live Translate</h1>
+        <p class="sub" data-i18n="subtitle"></p>
+      </div>
+    </div>
+    <button id="btnSettings" class="icon-btn" aria-label="Settings">&#9881;</button>
+  </header>
+
+  <section id="settings" class="card hidden">
+    <h2 data-i18n="settings"></h2>
+    <div class="grid3">
+      <label><span data-i18n="uiLang"></span>
+        <select id="uiLang">
+          <option value="de">Deutsch</option>
+          <option value="en">English</option>
+          <option value="fa">فارسی</option>
+        </select>
+      </label>
+      <label><span data-i18n="theme"></span>
+        <select id="theme">
+          <option value="system" data-i18n="themeSystem"></option>
+          <option value="light" data-i18n="themeLight"></option>
+          <option value="dark" data-i18n="themeDark"></option>
+        </select>
+      </label>
+      <label><span data-i18n="fontSize"></span> <b id="fontVal"></b>
+        <input id="font" type="range" min="12" max="24" step="1">
+      </label>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="grid2">
+      <label><span data-i18n="apiKeys"></span>
+        <div class="row">
+          <textarea id="keys" class="masked" rows="3" spellcheck="false" placeholder="AIza...&#10;AIza...&#10;AIza..."></textarea>
+          <button id="toggleKey" class="ghost" type="button">&#128065;</button>
+        </div>
+        <p class="hint" data-i18n="keyHint"></p>
+      </label>
+      <label><span data-i18n="target"></span>
+        <select id="target">
+          <option value="de">Deutsch</option>
+          <option value="en">English</option>
+          <option value="fa">فارسی</option>
+          <option value="ar">العربية</option>
+          <option value="tr">Türkçe</option>
+          <option value="fr">Français</option>
+          <option value="es">Español</option>
+          <option value="it">Italiano</option>
+          <option value="ru">Русский</option>
+          <option value="uk">Українська</option>
+          <option value="pl">Polski</option>
+          <option value="nl">Nederlands</option>
+          <option value="pt">Português</option>
+          <option value="hi">हिन्दी</option>
+          <option value="ja">日本語</option>
+          <option value="ko">한국어</option>
+          <option value="zh">中文</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="seg" role="radiogroup">
+      <label><input type="radio" name="mode" value="system" checked><span data-i18n="modeSystem"></span></label>
+      <label><input type="radio" name="mode" value="mic"><span data-i18n="modeMic"></span></label>
+    </div>
+
+    <label><span data-i18n="trVol"></span> <b id="gainVal"></b>
+      <input id="gain" type="range" min="0" max="300">
+    </label>
+
+    <div class="actions">
+      <button id="btnStart" class="primary" data-i18n="start"></button>
+      <button id="btnStop" class="outline" data-i18n="stop" disabled></button>
+      <span id="status" class="pill"></span>
+    </div>
+  </section>
+
+  <section class="cols">
+    <div class="card">
+      <h3 data-i18n="original"></h3>
+      <div id="inp" class="box"></div>
+    </div>
+    <div class="card">
+      <h3 data-i18n="translation"></h3>
+      <div id="out" class="box"></div>
+    </div>
+  </section>
+</div>
+<script src="renderer.js"></script>
+</body>
+</html>
